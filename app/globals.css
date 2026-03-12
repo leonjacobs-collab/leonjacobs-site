@@ -55,7 +55,7 @@ body {
 
 .matrix-pre {
   font-family: var(--font-mono), 'Courier New', monospace;
-  font-size: min(10px, calc((100vw - 96px) / 124), calc((100dvh - 120px) / 52));
+  font-size: min(10px, calc((100vw - 96px) / 124), calc((100dvh - 142px) / 69));
   line-height: 1.15;
   letter-spacing: 0;
   margin: 0;
