@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --orange: #E8530E;
+  --orange-dim: #C8BEB4;
+  --black: #1A1A1A;
+  --white: #FFFFFF;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-mono), monospace;
+  overflow: hidden;
+}
+
+/* ASCII Matrix */
+.matrix-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 24px;
+}
+
+.matrix-outer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.matrix-header {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--black);
+  text-transform: lowercase;
+}
+
+.matrix-art {
+  border: 1px solid var(--black);
+  padding: 20px 24px;
+  background: var(--white);
+}
+
+.matrix-pre {
+  font-family: var(--font-mono), 'Courier New', monospace;
+  font-size: min(10px, calc((100vw - 96px) / 124), calc((100dvh - 120px) / 52));
+  line-height: 1.15;
+  letter-spacing: 0;
+  margin: 0;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.matrix-pre .cl {
+  color: var(--orange);
+}
+
+.matrix-pre .cs {
+  color: var(--orange-dim);
+}
+
+.matrix-footer {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--black);
+  text-transform: lowercase;
+  min-height: 1.4em;
+}
+
+.matrix-label {
+  font-family: var(--font-mono), monospace;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+  color: var(--black);
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
