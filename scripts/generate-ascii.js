@@ -135,7 +135,7 @@ async function main() {
     console.log(`  Done.\n`);
   }
 
-  const outPath = path.join(__dirname, '..', 'app', 'data', 'ascii-art.ts');
+  const outPath = path.join(__dirname, '..', 'app', 'scramble', 'data', 'ascii-art.ts');
   fs.writeFileSync(outPath, generateTS(pieces));
   console.log(`Wrote ${pieces.length} pieces to ${outPath}`);
 }

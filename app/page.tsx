@@ -1,9 +1,9 @@
-import AsciiMatrix from './components/AsciiMatrix';
-
 export default function Home() {
   return (
-    <div className="matrix-wrap">
-      <AsciiMatrix />
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100dvh', padding: '24px' }}>
+      <span style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'lowercase' as const }}>
+        leon jacobs
+      </span>
     </div>
   );
 }
