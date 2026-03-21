@@ -1,0 +1,192 @@
+/* ============================================================
+   About / landing page
+   ============================================================ */
+
+.page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--sp-8) var(--page-padding);
+  max-width: 960px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+/* ── Headline ────────────────────────────────────────────── */
+.heading {
+  font-size: clamp(var(--text-lg), 4vw, var(--text-xl));
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--soot);
+  text-transform: uppercase;
+  margin-bottom: var(--sp-6);
+}
+
+/* ── Two-column card ─────────────────────────────────────── */
+.card {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--sp-6);
+  align-items: start;
+  margin-bottom: var(--sp-4);
+}
+
+/* ── Avatar ──────────────────────────────────────────────── */
+.avatar {
+  width: 260px;
+  height: 280px;
+  background-color: var(--aluminum);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ASCII-style avatar placeholder */
+.avatarAscii {
+  font-size: 6px;
+  line-height: 1;
+  color: var(--dark);
+  white-space: pre;
+  letter-spacing: 0;
+  user-select: none;
+}
+
+/* ── Bio text ────────────────────────────────────────────── */
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.bioName {
+  font-size: var(--text-base);
+  color: var(--soot);
+  line-height: var(--leading-snug);
+}
+
+.bioTitles {
+  font-size: var(--text-xs);
+  color: var(--clay);
+  line-height: var(--leading-body);
+  max-width: 520px;
+  border-left: 2px solid var(--clay);
+  padding-left: var(--sp-1);
+  opacity: 0.8;
+}
+
+.bioRole {
+  font-size: var(--text-sm);
+  color: var(--dark);
+  line-height: var(--leading-snug);
+}
+
+.bioRoleAmpersand {
+  color: var(--accent);
+}
+
+/* ── Footer row (socials + CTA) ──────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding-top: var(--sp-4);
+}
+
+/* ── Social links ────────────────────────────────────────── */
+.socials {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+.socials a {
+  font-size: var(--text-xs);
+  color: var(--ash);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  transition: color var(--duration-fast) var(--ease-flick);
+}
+
+.socials a:hover {
+  color: var(--soot);
+}
+
+.socialIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 33px;
+  height: 33px;
+  border: 1px solid var(--ash);
+  color: var(--dark);
+  font-size: var(--text-xs);
+  transition: border-color var(--duration-fast) var(--ease-flick),
+              color var(--duration-fast) var(--ease-flick);
+}
+
+.socialIcon:hover {
+  border-color: var(--soot);
+  color: var(--accent);
+}
+
+/* ── CTA button ──────────────────────────────────────────── */
+.cta {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--enamel);
+  background-color: var(--black);
+  padding: var(--sp-1) var(--sp-3);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-flick);
+}
+
+.cta:hover {
+  background-color: var(--accent);
+  color: var(--black);
+}
+
+/* ── Divider ─────────────────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent);
+  margin-top: var(--sp-6);
+  border: none;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .page {
+    padding: var(--sp-4) var(--page-padding-sm);
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+
+  .avatar {
+    width: 200px;
+    height: 200px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-3);
+  }
+}

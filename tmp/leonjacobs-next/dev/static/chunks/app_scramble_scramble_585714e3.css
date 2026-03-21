@@ -1,0 +1,77 @@
+/* [project]/app/scramble/scramble.css [app-client] (css) */
+.matrix-wrap {
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  padding: 24px;
+  display: flex;
+}
+
+.matrix-outer {
+  flex-direction: column;
+  gap: 12px;
+  display: flex;
+}
+
+.matrix-header {
+  letter-spacing: .15em;
+  color: var(--black);
+  text-transform: lowercase;
+  font-size: 11px;
+}
+
+.matrix-art {
+  border: 1px solid var(--black);
+  background: var(--white);
+  padding: 20px 24px;
+}
+
+.matrix-pre {
+  font-family: var(--font-mono), "Courier New", monospace;
+  letter-spacing: 0;
+  white-space: pre;
+  margin: 0;
+  font-size: min(10px, .806452vw - .774194px, 1.44928dvh - 2.05797px);
+  line-height: 1.15;
+  overflow: hidden;
+}
+
+.matrix-pre .cl {
+  color: var(--orange);
+}
+
+.matrix-pre .cs {
+  color: var(--orange-dim);
+}
+
+.matrix-footer {
+  letter-spacing: .15em;
+  color: var(--black);
+  text-transform: lowercase;
+  justify-content: flex-end;
+  min-height: 1.4em;
+  font-size: 11px;
+  display: flex;
+}
+
+.matrix-label {
+  font-family: var(--font-mono), monospace;
+}
+
+.cursor {
+  color: var(--black);
+  animation: 1s step-end infinite blink;
+  display: inline-block;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/*# sourceMappingURL=app_scramble_scramble_585714e3.css.map*/

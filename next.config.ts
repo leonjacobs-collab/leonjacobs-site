@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  distDir: '/tmp/leonjacobs-next',
 };
 
 export default nextConfig;
