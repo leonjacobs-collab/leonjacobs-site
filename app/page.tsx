@@ -1,6 +1,9 @@
-import Link from "next/link";
+import { getAllTags } from "@/lib/posts";
+import { SearchField } from "./components/SearchField";
 
 export default function Home() {
+  const tags = getAllTags();
+
   return (
     <main className="container" style={{ paddingTop: "var(--sp-16)", paddingBottom: "var(--sp-12)" }}>
       <div style={{ marginBottom: "var(--sp-2)" }}>
@@ -32,11 +35,7 @@ export default function Home() {
         and arranger of letters in a satisfying order.
       </p>
 
-      <div style={{ display: "flex", gap: "var(--sp-2)", flexWrap: "wrap" }}>
-        <Link href="/blogging" className="btn">
-          Read the blog &rarr;
-        </Link>
-      </div>
+      <SearchField tags={tags} />
 
       <hr className="divider" />
 

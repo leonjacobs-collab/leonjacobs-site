@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts, getPostsByTag } from "@/lib/posts";
+import { ScrambleReveal } from "../components/ScrambleText";
 
 export const metadata: Metadata = {
   title: "Blogging",
 };
 
-export default function BlogIndex() {
-  const posts = getAllPosts();
+export default async function BlogIndex({
+  searchParams,
+}: {
+  searchParams: Promise<{ tag?: string }>;
+}) {
+  const { tag } = await searchParams;
+  const posts = tag ? getPostsByTag(tag) : getAllPosts();
+  const isFiltered = Boolean(tag);
 
-  return (
+  const content = (
     <main
       className="container"
       style={{ paddingTop: "var(--sp-8)", paddingBottom: "var(--sp-12)" }}
@@ -29,14 +36,34 @@ export default function BlogIndex() {
       <h1
         style={{
           fontSize: "var(--text-2xl)",
-          marginBottom: "var(--sp-6)",
+          marginBottom: "var(--sp-2)",
         }}
       >
-        Blogging
+        {isFiltered ? `tagged: ${tag}` : "Blogging"}
       </h1>
 
+      {isFiltered && (
+        <Link
+          href="/blogging"
+          style={{
+            display: "inline-block",
+            fontSize: "var(--text-sm)",
+            color: "var(--accent)",
+            marginBottom: "var(--sp-6)",
+          }}
+        >
+          clear filter &times;
+        </Link>
+      )}
+
+      {!isFiltered && <div style={{ marginBottom: "var(--sp-4)" }} />}
+
       {posts.length === 0 ? (
-        <p style={{ color: "var(--fg-muted)" }}>No posts yet. Check back soon.</p>
+        <p style={{ color: "var(--fg-muted)" }}>
+          {isFiltered
+            ? `No posts tagged "${tag}". Try another tag.`
+            : "No posts yet. Check back soon."}
+        </p>
       ) : (
         <ul style={{ listStyle: "none", padding: 0 }}>
           {posts.map((post) => (
@@ -77,8 +104,8 @@ export default function BlogIndex() {
                 )}
                 {post.tags && post.tags.length > 0 && (
                   <div style={{ display: "flex", gap: "var(--sp-1)", marginTop: "var(--sp-1)" }}>
-                    {post.tags.map((tag) => (
-                      <span key={tag} className="tag">{tag}</span>
+                    {post.tags.map((t) => (
+                      <span key={t} className="tag">{t}</span>
                     ))}
                   </div>
                 )}
@@ -89,4 +116,11 @@ export default function BlogIndex() {
       )}
     </main>
   );
+
+  // Wrap in scramble effect only when arriving via tag search
+  if (isFiltered) {
+    return <ScrambleReveal duration={1400}>{content}</ScrambleReveal>;
+  }
+
+  return content;
 }

@@ -1,0 +1,283 @@
+/* ============================================================
+   EDITOR DESIGN TOKENS — Cockpit Control Panel
+   DepartureMono · sharp rectangles · amber accents · 11px grid
+   ============================================================ */
+
+:root {
+  --carbon:  #222222;
+  --enamel:  #eeeeee;
+  --amber:   #ffa133;
+  --amber-dim: #cc7a1a;
+  --amber-glow: rgba(255, 161, 51, 0.35);
+  --cement:  #c0c0c0;
+  --ash:     #8e8e8e;
+  --smoke:   #3a3a3a;
+  --soot:    #1a1a1a;
+  --green:   #22c55e;
+  --red:     #ef4444;
+
+  --font-mono: 'Departure Mono', 'SF Mono', 'Fira Code', monospace;
+
+  --grid: 11px;
+  --sp-1: 11px;
+  --sp-2: 22px;
+  --sp-3: 33px;
+  --sp-4: 44px;
+  --sp-6: 66px;
+  --sp-8: 88px;
+
+  --text-xs:   0.7rem;
+  --text-sm:   0.8rem;
+  --text-base: 0.9rem;
+  --text-lg:   1.1rem;
+  --text-xl:   1.4rem;
+  --text-2xl:  1.8rem;
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  background: var(--soot);
+  color: var(--enamel);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--amber);
+  color: var(--carbon);
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--soot);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--smoke);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ash);
+}
+
+/* ── Shared components ─────────────────────────────────── */
+
+.editor-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--sp-2);
+  height: var(--sp-4);
+  background: var(--carbon);
+  border-bottom: 1px solid var(--smoke);
+  flex-shrink: 0;
+}
+
+.topbar-title {
+  font-size: var(--text-sm);
+  color: var(--amber);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ── Buttons ───────────────────────────────────────────── */
+
+.btn-primary {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--carbon);
+  background: var(--amber);
+  border: none;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: box-shadow 150ms ease, background 150ms ease;
+}
+.btn-primary:hover {
+  box-shadow: 0 0 16px var(--amber-glow);
+}
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--enamel);
+  background: transparent;
+  border: 1px solid var(--smoke);
+  padding: 7px 18px;
+  cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+.btn-secondary:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.btn-danger {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  background: transparent;
+  border: 1px solid var(--red);
+  padding: 7px 18px;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+.btn-danger:hover {
+  background: var(--red);
+  color: var(--enamel);
+}
+
+/* ── Form inputs ───────────────────────────────────────── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  font-size: var(--text-xs);
+  color: var(--ash);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--enamel);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--smoke);
+  padding: 6px 0;
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--amber);
+}
+
+.field select {
+  background: var(--carbon);
+  border: 1px solid var(--smoke);
+  padding: 6px 8px;
+}
+
+.field select:focus {
+  border-color: var(--amber);
+}
+
+/* ── Tags ──────────────────────────────────────────────── */
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-xs);
+  color: var(--amber);
+  border: 1px solid var(--amber-dim);
+  padding: 2px 8px;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tag-pill button {
+  background: none;
+  border: none;
+  color: var(--ash);
+  cursor: pointer;
+  font-size: var(--text-xs);
+  padding: 0;
+  line-height: 1;
+}
+.tag-pill button:hover {
+  color: var(--red);
+}
+
+/* ── Status dots ───────────────────────────────────────── */
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.dot-draft { background: var(--amber); }
+.dot-published { background: var(--green); }
+
+/* ── Modal ─────────────────────────────────────────────── */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: var(--carbon);
+  border: 1px solid var(--smoke);
+  padding: var(--sp-3);
+  max-width: 420px;
+  width: 90%;
+}
+
+.modal-box h3 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--sp-2);
+  color: var(--enamel);
+  font-weight: normal;
+}
+
+.modal-box p {
+  font-size: var(--text-sm);
+  color: var(--cement);
+  margin-bottom: var(--sp-2);
+}
+
+.modal-actions {
+  display: flex;
+  gap: var(--sp-1);
+  justify-content: flex-end;
+}

@@ -63,6 +63,24 @@ export function getAllPosts(): PostMeta[] {
   );
 }
 
+export function getAllTags(): string[] {
+  const posts = getAllPosts();
+  const tagSet = new Set<string>();
+  for (const post of posts) {
+    for (const tag of post.tags ?? []) {
+      tagSet.add(tag.toLowerCase());
+    }
+  }
+  return Array.from(tagSet).sort();
+}
+
+export function getPostsByTag(tag: string): PostMeta[] {
+  const needle = tag.toLowerCase();
+  return getAllPosts().filter((post) =>
+    (post.tags ?? []).some((t) => t.toLowerCase() === needle)
+  );
+}
+
 export function getPostBySlug(slug: string) {
   const filePath = resolvePostPath(slug);
   if (!filePath) return null;

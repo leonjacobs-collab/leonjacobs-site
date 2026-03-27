@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate:ascii": "node scripts/generate-ascii.js"
+    "generate:ascii": "node scripts/generate-ascii.js",
+    "editor": "cd editor && npm run dev"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
