@@ -1,54 +1,53 @@
-import styles from './about.module.css';
-import AsciiAvatar from './components/AsciiAvatar';
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className={styles.page}>
+    <main className="container" style={{ paddingTop: "var(--sp-16)", paddingBottom: "var(--sp-12)" }}>
+      <div style={{ marginBottom: "var(--sp-2)" }}>
+        <span className="tag">v2.0</span>
+      </div>
 
-      <h1 className={styles.heading}>
-        Just Who Is This{' '}
-        Leon Jacobs Guy?
+      <h1
+        style={{
+          fontSize: "var(--text-3xl)",
+          lineHeight: "var(--leading-tight)",
+          marginBottom: "var(--sp-4)",
+        }}
+      >
+        Leon Jacobs
       </h1>
 
-      <div className={styles.card}>
+      <p
+        style={{
+          fontSize: "var(--text-lg)",
+          color: "var(--fg-muted)",
+          maxWidth: "55ch",
+          marginBottom: "var(--sp-6)",
+          lineHeight: "var(--leading-snug)",
+        }}
+      >
+        Creative &amp; Experience Director at Empathy Lab.
+        <br />
+        Professional overthinker, robot wrangler of wayward intelligence,
+        and arranger of letters in a satisfying order.
+      </p>
 
-        {/* Avatar */}
-        <div className={styles.avatar}>
-          <AsciiAvatar />
-        </div>
-
-        {/* Bio */}
-        <div className={styles.bio}>
-          <p className={styles.bioName}>Leon Jacobs</p>
-
-          <p className={styles.bioTitles}>
-            Professional Overthinker, Vice-President of the Dumb Question Asker
-            Club, First of His Name in the Kingdom of Tangents, Skeptical
-            Believer in the Algorithm, Robot Wrangler of Wayward Intelligence,
-            Arranger of Letters in a Satisfying Order, Patron Saint of Shifting
-            Deadlines, and Defender of the Idea.
-          </p>
-
-          <p className={styles.bioRole}>
-            <span className={styles.bioRoleAmpersand}>&amp;</span>{' '}
-            Creative &amp; Experience Director at Empathy Lab
-          </p>
-        </div>
+      <div style={{ display: "flex", gap: "var(--sp-2)", flexWrap: "wrap" }}>
+        <Link href="/blogging" className="btn">
+          Read the blog &rarr;
+        </Link>
       </div>
 
-      {/* Footer: socials + CTA */}
-      <div className={styles.footer}>
-        <div className={styles.socials}>
-          <a className={styles.socialIcon} href="#" aria-label="LinkedIn" title="LinkedIn">in</a>
-          <a className={styles.socialIcon} href="#" aria-label="Medium" title="Medium">M</a>
-          <a className={styles.socialIcon} href="#" aria-label="Links" title="Links">&lt;/&gt;</a>
-          <a className={styles.socialIcon} href="#" aria-label="Instagram" title="Instagram">@</a>
-        </div>
+      <hr className="divider" />
 
-        <a href="/scramble" className={styles.cta}>Learn more</a>
-      </div>
-
-      <hr className={styles.divider} />
+      <footer
+        style={{
+          fontSize: "var(--text-sm)",
+          color: "var(--fg-faint)",
+        }}
+      >
+        &copy; {new Date().getFullYear()} Leon Jacobs
+      </footer>
     </main>
   );
 }
