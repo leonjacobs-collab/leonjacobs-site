@@ -281,3 +281,16 @@ body {
   gap: var(--sp-1);
   justify-content: flex-end;
 }
+
+/* ── Markdown toolbar buttons ─────────────────────────── */
+
+.editor-toolbar-btn:hover {
+  color: var(--amber);
+  border-color: var(--smoke);
+  background: var(--soot);
+}
+
+.editor-toolbar-btn:active {
+  background: var(--smoke);
+  color: var(--enamel);
+}

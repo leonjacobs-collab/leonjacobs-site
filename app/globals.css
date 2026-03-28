@@ -454,6 +454,122 @@ a:hover {
   box-shadow: 0 0 12px var(--accent-glow);
 }
 
+/* ── Site nav ────────────────────────────────────────────── */
+
+.site-nav {
+  position: fixed;
+  top: var(--sp-4);
+  left: 60%;
+  z-index: 1000;
+}
+
+.site-nav-inner {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+.site-nav-trigger {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  color: var(--fg-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: 0.02em;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.site-nav-trigger:hover {
+  color: var(--fg);
+}
+
+.site-nav-slash {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  color: var(--accent);
+  margin: 0 1px;
+  user-select: none;
+}
+
+.site-nav-select {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  color: var(--fg);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px 6px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.site-nav-select:hover {
+  border-color: var(--border);
+  color: var(--accent);
+}
+
+.site-nav-current {
+  /* inherits */
+}
+
+.site-nav-caret {
+  font-size: 7px;
+  opacity: 0.5;
+  line-height: 1;
+}
+
+.site-nav-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  list-style: none;
+  padding: 4px 0;
+  margin: 0;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-raised);
+  min-width: 200px;
+  overflow: hidden;
+}
+
+.site-nav-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  color: var(--fg-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.site-nav-option:hover {
+  background: var(--bg-sunken);
+  color: var(--accent);
+}
+
+.site-nav-option.active {
+  color: var(--accent);
+}
+
+.site-nav-option.active::before {
+  content: "› ";
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 
 @media (max-width: 640px) {

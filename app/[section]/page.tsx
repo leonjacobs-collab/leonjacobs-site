@@ -1,22 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getPublishedPosts, getPostsByTag } from "@/lib/posts";
-import { ScrambleReveal } from "../components/ScrambleText";
+import { notFound } from "next/navigation";
+import { getPublishedPosts } from "@/lib/posts";
+import { SECTIONS } from "@/lib/sections";
 
-export const metadata: Metadata = {
-  title: "Blogging",
-};
+export function generateStaticParams() {
+  return SECTIONS.map((section) => ({ section }));
+}
 
-export default async function BlogIndex({
-  searchParams,
+export async function generateMetadata({
+  params,
 }: {
-  searchParams: Promise<{ tag?: string }>;
-}) {
-  const { tag } = await searchParams;
-  const posts = tag ? getPostsByTag(tag) : getPublishedPosts();
-  const isFiltered = Boolean(tag);
+  params: Promise<{ section: string }>;
+}): Promise<Metadata> {
+  const { section } = await params;
+  if (!SECTIONS.includes(section as Section)) return {};
+  return { title: section.charAt(0).toUpperCase() + section.slice(1) };
+}
 
-  const content = (
+export default async function SectionPage({
+  params,
+}: {
+  params: Promise<{ section: string }>;
+}) {
+  const { section } = await params;
+
+  if (!SECTIONS.includes(section as Section)) notFound();
+
+  const posts = getPublishedPosts().filter((p) => p.section === section);
+
+  return (
     <main
       className="container"
       style={{ paddingTop: "var(--sp-8)", paddingBottom: "var(--sp-12)" }}
@@ -36,38 +49,20 @@ export default async function BlogIndex({
       <h1
         style={{
           fontSize: "var(--text-2xl)",
-          marginBottom: "var(--sp-2)",
+          marginBottom: "var(--sp-4)",
         }}
       >
-        {isFiltered ? `tagged: ${tag}` : "Blogging"}
+        {section}
       </h1>
-
-      {isFiltered && (
-        <Link
-          href="/blogging"
-          style={{
-            display: "inline-block",
-            fontSize: "var(--text-sm)",
-            color: "var(--accent)",
-            marginBottom: "var(--sp-6)",
-          }}
-        >
-          clear filter &times;
-        </Link>
-      )}
-
-      {!isFiltered && <div style={{ marginBottom: "var(--sp-4)" }} />}
 
       {posts.length === 0 ? (
         <p style={{ color: "var(--fg-muted)" }}>
-          {isFiltered
-            ? `No posts tagged "${tag}". Try another tag.`
-            : "No posts yet. Check back soon."}
+          Nothing here yet. Check back soon.
         </p>
       ) : (
         <ul style={{ listStyle: "none", padding: 0 }}>
           {posts.map((post) => (
-            <li key={`${post.section}/${post.slug}`} style={{ marginBottom: "var(--sp-2)" }}>
+            <li key={post.slug} style={{ marginBottom: "var(--sp-2)" }}>
               <Link
                 href={`/${post.section}/${post.slug}`}
                 className="card"
@@ -116,11 +111,4 @@ export default async function BlogIndex({
       )}
     </main>
   );
-
-  // Wrap in scramble effect only when arriving via tag search
-  if (isFiltered) {
-    return <ScrambleReveal duration={1400}>{content}</ScrambleReveal>;
-  }
-
-  return content;
 }

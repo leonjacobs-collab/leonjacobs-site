@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SiteNav } from "./components/SiteNav";
 
 export const metadata: Metadata = {
   title: {
@@ -22,7 +23,10 @@ export default function RootLayout({
           href="https://departuremono.com/assets/DepartureMono-1_422.css"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <SiteNav />
+        {children}
+      </body>
     </html>
   );
 }

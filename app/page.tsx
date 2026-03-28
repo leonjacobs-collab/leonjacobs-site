@@ -17,7 +17,7 @@ export default function Home() {
           marginBottom: "var(--sp-4)",
         }}
       >
-        Leon Jacobs
+       This may be Leon.  
       </h1>
 
       <p
@@ -32,7 +32,7 @@ export default function Home() {
         Creative &amp; Experience Director at Empathy Lab.
         <br />
         Professional overthinker, robot wrangler of wayward intelligence,
-        and arranger of letters in a satisfying order.
+        and arranger of letters in a satisfying order and the first of his name.
       </p>
 
       <SearchField tags={tags} />

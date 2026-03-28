@@ -1,4 +1,5 @@
 import path from "node:path";
+import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -6,8 +7,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 /** Root of the Next.js site (two levels up from editor/server/utils/) */
 export const SITE_ROOT = path.resolve(__dirname, "..", "..", "..");
 
-/** Valid content sections */
-export const SECTIONS = ["writing", "building", "designing", "showcasing"];
+/** Valid content sections — reads from the single source of truth */
+export const SECTIONS = JSON.parse(
+  fs.readFileSync(path.join(SITE_ROOT, "lib", "sections.json"), "utf-8")
+);
 
 /** Legacy posts directory (pre-section migration) */
 export const LEGACY_POSTS_DIR = path.join(SITE_ROOT, "content", "posts");

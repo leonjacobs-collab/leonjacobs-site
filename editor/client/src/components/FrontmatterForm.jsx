@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-const SECTIONS = ["writing", "building", "designing", "showcasing"];
+import SECTIONS from "../../../../lib/sections.json";
 
 function slugify(title) {
   return title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
