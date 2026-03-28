@@ -81,7 +81,6 @@ export function ScrambleText({
   }, [text, duration, delay]);
 
   return (
-    // @ts-expect-error dynamic tag
     <Tag className={className} style={style}>
       {display}
     </Tag>
