@@ -16,7 +16,7 @@ interface ScrambleTextProps {
   /** Delay before the scramble begins in ms */
   delay?: number;
   /** HTML tag to render */
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   className?: string;
   style?: React.CSSProperties;
 }
