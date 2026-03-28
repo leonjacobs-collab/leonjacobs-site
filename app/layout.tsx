@@ -8,7 +8,25 @@ export const metadata: Metadata = {
     template: "%s — Leon Jacobs",
   },
   description: "Leon Jacobs — personal site & blog",
+  alternates: {
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
+  },
 };
+
+/** Inline script to apply theme before first paint — prevents FOUC */
+const themeScript = `
+(function(){
+  try {
+    var t = localStorage.getItem('leonmay-theme') || 'system';
+    var r = t === 'system'
+      ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : t;
+    document.documentElement.setAttribute('data-theme', r);
+  } catch(e){}
+})();
+`;
 
 export default function RootLayout({
   children,
@@ -16,8 +34,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link
           rel="stylesheet"
           href="https://departuremono.com/assets/DepartureMono-1_422.css"

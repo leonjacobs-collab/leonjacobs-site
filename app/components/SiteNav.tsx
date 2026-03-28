@@ -3,6 +3,7 @@
 import { useRouter, usePathname } from "next/navigation";
 import { useCallback, useState, useRef, useEffect } from "react";
 import { SECTIONS } from "@/lib/sections";
+import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_ITEMS = SECTIONS.map((s) => ({ label: s, href: `/${s}` }));
 
@@ -52,10 +53,14 @@ export function SiteNav() {
 
   return (
     <nav className="site-nav">
+      {/* Left: theme toggle */}
+      <ThemeToggle />
+
+      {/* Right: site name / section selector */}
       <div className="site-nav-inner" ref={dropdownRef}>
         <button
           className="site-nav-trigger"
-          onClick={() => (pathname === "/" ? router.push("/") : router.push("/"))}
+          onClick={() => router.push("/")}
           aria-label="Go home"
         >
           leonmay.be

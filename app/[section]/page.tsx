@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublishedPosts } from "@/lib/posts";
 import { SECTIONS } from "@/lib/sections";
+import { FeedLink } from "../components/FeedLink";
 
 export function generateStaticParams() {
   return SECTIONS.map((section) => ({ section }));
@@ -14,8 +15,15 @@ export async function generateMetadata({
   params: Promise<{ section: string }>;
 }): Promise<Metadata> {
   const { section } = await params;
-  if (!SECTIONS.includes(section as Section)) return {};
-  return { title: section.charAt(0).toUpperCase() + section.slice(1) };
+  if (!SECTIONS.includes(section)) return {};
+  return {
+    title: section.charAt(0).toUpperCase() + section.slice(1),
+    alternates: {
+      types: {
+        "application/rss+xml": `/${section}/feed.xml`,
+      },
+    },
+  };
 }
 
 export default async function SectionPage({
@@ -25,7 +33,7 @@ export default async function SectionPage({
 }) {
   const { section } = await params;
 
-  if (!SECTIONS.includes(section as Section)) notFound();
+  if (!SECTIONS.includes(section)) notFound();
 
   const posts = getPublishedPosts().filter((p) => p.section === section);
 
@@ -109,6 +117,10 @@ export default async function SectionPage({
           ))}
         </ul>
       )}
+
+      <hr className="divider" />
+
+      <FeedLink section={section} />
     </main>
   );
 }
