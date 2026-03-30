@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 
-export default function MediaPanel({ section, slug, onInsert, open }) {
+export default function MediaPanel({ section, slug, onInsert, onAsciiEdit, open }) {
   const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
 
@@ -25,8 +25,10 @@ export default function MediaPanel({ section, slug, onInsert, open }) {
   }
 
   function handleFileSelect(e) {
+    if (!section || !slug) return;
     if (!e.target.files?.length) return;
     uploadFiles(e.target.files);
+    e.target.value = "";
   }
 
   async function uploadFiles(fileList) {
@@ -80,19 +82,29 @@ export default function MediaPanel({ section, slug, onInsert, open }) {
       {/* Thumbnail grid */}
       <div style={styles.grid}>
         {files.map((f) => (
-          <button
-            key={f.filename}
-            style={styles.thumb}
-            onClick={() => onInsert(f.markdown)}
-            title={`Insert ${f.filename}`}
-          >
-            <img
-              src={f.path}
-              alt={f.filename}
-              style={styles.thumbImg}
-            />
-            <span style={styles.thumbLabel}>{f.filename}</span>
-          </button>
+          <div key={f.filename} style={styles.thumbWrap}>
+            <button
+              style={styles.thumb}
+              onClick={() => onInsert(f.markdown)}
+              title={`Insert ${f.filename}`}
+            >
+              <img
+                src={f.path}
+                alt={f.filename}
+                style={styles.thumbImg}
+              />
+              <span style={styles.thumbLabel}>{f.filename}</span>
+            </button>
+            {onAsciiEdit && (
+              <button
+                style={styles.asciiBtn}
+                onClick={() => onAsciiEdit(f.path)}
+                title="Convert to ASCII art"
+              >
+                ▓ ASCII
+              </button>
+            )}
+          </div>
         ))}
       </div>
     </div>
@@ -154,6 +166,9 @@ const styles = {
     gap: 4,
     padding: "var(--sp-1)",
   },
+  thumbWrap: {
+    position: "relative",
+  },
   thumb: {
     background: "var(--soot)",
     border: "1px solid var(--smoke)",
@@ -163,7 +178,23 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     gap: 4,
+    width: "100%",
     transition: "border-color 100ms ease",
+  },
+  asciiBtn: {
+    position: "absolute",
+    top: 2,
+    right: 2,
+    fontFamily: "var(--font-mono)",
+    fontSize: "8px",
+    color: "var(--amber)",
+    background: "rgba(26, 26, 26, 0.85)",
+    border: "1px solid var(--amber-dim)",
+    padding: "2px 5px",
+    cursor: "pointer",
+    letterSpacing: "0.08em",
+    lineHeight: 1.2,
+    zIndex: 1,
   },
   thumbImg: {
     width: "100%",

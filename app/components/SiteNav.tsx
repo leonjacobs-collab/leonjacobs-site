@@ -5,6 +5,7 @@ import { useCallback, useState, useRef, useEffect } from "react";
 import { SECTIONS } from "@/lib/sections";
 import { ThemeToggle } from "./ThemeToggle";
 
+const ABOUT_ITEM = { label: "this guy", href: "/thisguy" };
 const NAV_ITEMS = SECTIONS.map((s) => ({ label: s, href: `/${s}` }));
 
 export function SiteNav() {
@@ -16,8 +17,8 @@ export function SiteNav() {
   // Derive current section from the URL
   const currentSection = (() => {
     const seg = pathname.split("/").filter(Boolean)[0];
+    if (seg === "thisguy") return ABOUT_ITEM.label;
     if (seg && NAV_ITEMS.some((s) => s.label === seg)) return seg;
-    if (seg === "blogging") return "blogging";
     return null;
   })();
 
@@ -82,6 +83,15 @@ export function SiteNav() {
 
         {open && (
           <ul className="site-nav-dropdown" role="listbox">
+            <li key={ABOUT_ITEM.label} role="option" aria-selected={currentSection === ABOUT_ITEM.label}>
+              <button
+                className={`site-nav-option site-nav-option-about${currentSection === ABOUT_ITEM.label ? " active" : ""}`}
+                onClick={() => handleSelect(ABOUT_ITEM.href)}
+              >
+                {ABOUT_ITEM.label}
+              </button>
+            </li>
+            <li className="site-nav-divider" role="separator" aria-hidden="true" />
             {NAV_ITEMS.map((s) => (
               <li key={s.label} role="option" aria-selected={currentSection === s.label}>
                 <button

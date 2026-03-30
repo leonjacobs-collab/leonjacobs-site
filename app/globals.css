@@ -673,6 +673,17 @@ a:hover {
   content: "› ";
 }
 
+.site-nav-option-about {
+  font-weight: bold;
+  color: var(--fg);
+}
+
+.site-nav-divider {
+  border: none;
+  border-top: 1px dotted var(--border);
+  margin: 4px 12px;
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 
 @media (max-width: 640px) {

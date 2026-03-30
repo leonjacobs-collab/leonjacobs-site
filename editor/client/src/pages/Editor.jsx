@@ -5,6 +5,8 @@ import MarkdownEditor from "../components/MarkdownEditor.jsx";
 import Preview from "../components/Preview.jsx";
 import MediaPanel from "../components/MediaPanel.jsx";
 import ConfirmModal from "../components/ConfirmModal.jsx";
+import AsciiEditorModal from "../components/AsciiEditorModal.jsx";
+import ImagePickerModal from "../components/ImagePickerModal.jsx";
 import StatusBar from "../components/StatusBar.jsx";
 
 const DEFAULT_FM = {
@@ -30,6 +32,8 @@ export default function EditorPage() {
   const [publishResult, setPublishResult] = useState(null);
   const [mediaOpen, setMediaOpen] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [asciiModal, setAsciiModal] = useState(null);
+  const [imagePickerOpen, setImagePickerOpen] = useState(false);
   const editorViewRef = useRef(null);
 
   // Load existing post
@@ -152,6 +156,31 @@ export default function EditorPage() {
     }
   }, []);
 
+  // Open ASCII editor for an image
+  const handleAsciiEdit = useCallback((imagePath) => {
+    setAsciiModal({ imagePath });
+  }, []);
+
+  // Insert image markdown from the image picker modal
+  const handleImagePickerInsert = useCallback((md) => {
+    const view = editorViewRef.current;
+    if (view) {
+      const cursor = view.state.selection.main.head;
+      view.dispatch({ changes: { from: cursor, insert: md } });
+    }
+    setImagePickerOpen(false);
+  }, []);
+
+  // Insert ASCII art MDX tag at cursor
+  const handleAsciiInsert = useCallback((mdxTag) => {
+    const view = editorViewRef.current;
+    if (view) {
+      const cursor = view.state.selection.main.head;
+      view.dispatch({ changes: { from: cursor, insert: mdxTag } });
+    }
+    setAsciiModal(null);
+  }, []);
+
   return (
     <>
       {/* Top bar */}
@@ -218,6 +247,7 @@ export default function EditorPage() {
             value={body}
             onChange={setBody}
             viewRef={editorViewRef}
+            onImageClick={() => setImagePickerOpen(true)}
           />
         </div>
         <div style={styles.previewPane}>
@@ -228,6 +258,7 @@ export default function EditorPage() {
           slug={frontmatter.slug || slug || ""}
           open={mediaOpen}
           onInsert={handleMediaInsert}
+          onAsciiEdit={handleAsciiEdit}
         />
       </div>
 
@@ -239,6 +270,24 @@ export default function EditorPage() {
           message={`This will move "${frontmatter.title || slug}" to .trash/. You can recover it manually.`}
           onConfirm={() => { setDeleteModal(false); handleDelete(); }}
           onCancel={() => setDeleteModal(false)}
+        />
+      )}
+
+      {imagePickerOpen && (
+        <ImagePickerModal
+          section={frontmatter.section || section || "writing"}
+          slug={frontmatter.slug || slug || ""}
+          onInsert={handleImagePickerInsert}
+          onAsciiEdit={handleAsciiEdit}
+          onClose={() => setImagePickerOpen(false)}
+        />
+      )}
+
+      {asciiModal && (
+        <AsciiEditorModal
+          imagePath={asciiModal.imagePath}
+          onInsert={handleAsciiInsert}
+          onClose={() => setAsciiModal(null)}
         />
       )}
     </>

@@ -1,5 +1,29 @@
 import { useEffect, useState } from "react";
 
+/** Placeholder for <AsciiArt> in the editor preview (renderToString is sync) */
+function AsciiArtPreview({ src, cols, ramp, mode, speed, invert }) {
+  return (
+    <div
+      style={{
+        border: "1px dashed #3a3a3a",
+        background: "#1a1a1a",
+        padding: "24px 16px",
+        margin: "16px 0",
+        textAlign: "center",
+        fontFamily: "'Departure Mono', monospace",
+      }}
+    >
+      <div style={{ fontSize: "20px", opacity: 0.3, marginBottom: 8 }}>▓</div>
+      <div style={{ fontSize: "11px", color: "#8e8e8e", letterSpacing: "0.12em" }}>
+        ASCII ART
+      </div>
+      <div style={{ fontSize: "10px", color: "#5a5a5a", marginTop: 6 }}>
+        {src} · {cols || 100} cols · {ramp || "departure"} · {mode || "cascade"}
+      </div>
+    </div>
+  );
+}
+
 /**
  * Live MDX preview panel.
  * Compiles MDX client-side using @mdx-js/mdx and renders with React.
@@ -38,7 +62,9 @@ export default function Preview({ markdown, frontmatter }) {
           baseUrl: import.meta.url,
         });
 
-        const rendered = renderToString(React.createElement(Content));
+        const rendered = renderToString(
+          React.createElement(Content, { components: { AsciiArt: AsciiArtPreview } })
+        );
         setHtml(rendered);
         setError(null);
       } catch (err) {

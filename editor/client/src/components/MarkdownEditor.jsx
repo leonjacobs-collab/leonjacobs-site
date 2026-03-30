@@ -205,7 +205,7 @@ function applyAction(view, action) {
 /**
  * CodeMirror 6 markdown editor with formatting toolbar.
  */
-export default function MarkdownEditor({ value, onChange, viewRef }) {
+export default function MarkdownEditor({ value, onChange, viewRef, onImageClick }) {
   const containerRef = useRef(null);
   const editorRef = useRef(null);
 
@@ -253,8 +253,12 @@ export default function MarkdownEditor({ value, onChange, viewRef }) {
   }, [value]);
 
   const handleToolbar = useCallback((action) => {
+    if (action === "image" && onImageClick) {
+      onImageClick();
+      return;
+    }
     applyAction(editorRef.current, action);
-  }, []);
+  }, [onImageClick]);
 
   return (
     <div style={{ flex: 1, overflow: "hidden", display: "flex", flexDirection: "column" }}>

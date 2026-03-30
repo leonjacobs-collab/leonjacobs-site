@@ -1,11 +1,13 @@
 interface FeedLinkProps {
-  section: string;
+  /** Section name, or omit/pass "all" for the root combined feed */
+  section?: string;
 }
 
 export function FeedLink({ section }: FeedLinkProps) {
+  const href = !section || section === "all" ? "/feed.xml" : `/${section}/feed.xml`;
   return (
     <a
-      href={`/${section}/feed.xml`}
+      href={href}
       className="feed-link"
       target="_blank"
       rel="noopener noreferrer"

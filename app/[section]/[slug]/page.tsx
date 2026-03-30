@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
 import { getPublishedPosts, getPostBySlug } from "@/lib/posts";
 import { SECTIONS } from "@/lib/sections";
+import AsciiArt from "@/app/components/AsciiArt";
 
 export function generateStaticParams() {
   return getPublishedPosts().map((post) => ({
@@ -57,7 +58,7 @@ export default async function PostPage({
       style={{ paddingTop: "var(--sp-8)", paddingBottom: "var(--sp-12)" }}
     >
       <Link
-        href="/blogging"
+        href="/archive"
         style={{
           display: "inline-block",
           fontSize: "var(--text-sm)",
@@ -86,7 +87,7 @@ export default async function PostPage({
             {post.meta.tags.map((tag) => (
               <Link
                 key={tag}
-                href={`/blogging?tag=${encodeURIComponent(tag)}`}
+                href={`/archive?tag=${encodeURIComponent(tag)}`}
                 className="tag tag-clickable"
                 style={{ textDecoration: "none" }}
               >
@@ -100,7 +101,7 @@ export default async function PostPage({
       <hr className="divider" />
 
       <article className="prose">
-        <MDXContent />
+        <MDXContent components={{ AsciiArt }} />
       </article>
     </main>
   );

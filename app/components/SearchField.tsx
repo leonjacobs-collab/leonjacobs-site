@@ -17,7 +17,7 @@ export function SearchField({ tags }: SearchFieldProps) {
       e.preventDefault();
       const trimmed = query.trim();
       if (trimmed.length > 0) {
-        router.push(`/blogging?tag=${encodeURIComponent(trimmed)}`);
+        router.push(`/archive?tag=${encodeURIComponent(trimmed)}`);
       }
     },
     [query, router]
@@ -25,7 +25,7 @@ export function SearchField({ tags }: SearchFieldProps) {
 
   const handleTagClick = useCallback(
     (tag: string) => {
-      router.push(`/blogging?tag=${encodeURIComponent(tag)}`);
+      router.push(`/archive?tag=${encodeURIComponent(tag)}`);
     },
     [router]
   );

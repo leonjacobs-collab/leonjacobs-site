@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local editor (CMS tool — runs locally only, never deployed)
+/editor/node_modules
+/editor/client/dist
+/editor/client/.vite
