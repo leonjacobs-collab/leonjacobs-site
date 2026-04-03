@@ -29,7 +29,7 @@ export default function EditorPage() {
   const [body, setBody] = useState("");
   const [saving, setSaving] = useState(false);
   const [publishing, setPublishing] = useState(false);
-  const [publishResult, setPublishResult] = useState(null);
+  const [publishResult, setPublishResult] = useState(null); // null | "success" | { error: string }
   const [mediaOpen, setMediaOpen] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [asciiModal, setAsciiModal] = useState(null);
@@ -125,9 +125,9 @@ export default function EditorPage() {
         body: JSON.stringify({ message: `content: ${fm.title}` }),
       });
       const result = await res.json();
-      setPublishResult(result.success ? "success" : "error");
-    } catch {
-      setPublishResult("error");
+      setPublishResult(result.success ? "success" : { error: result.error || "Push failed" });
+    } catch (err) {
+      setPublishResult({ error: err.message || "Request failed" });
     }
     setPublishing(false);
     setTimeout(() => setPublishResult(null), 4000);
@@ -222,12 +222,12 @@ export default function EditorPage() {
             style={
               publishResult === "success"
                 ? { background: "var(--green)" }
-                : publishResult === "error"
+                : publishResult?.error
                 ? { background: "var(--red)" }
                 : {}
             }
           >
-            {publishing ? "Publishing…" : publishResult === "success" ? "✓ Published" : publishResult === "error" ? "✗ Failed" : "Publish"}
+            {publishing ? "Publishing…" : publishResult === "success" ? "✓ Published" : publishResult?.error ? "✗ Failed" : "Publish"}
           </button>
           {!isNew && (
             <button className="btn-danger" onClick={() => setDeleteModal(true)}>
@@ -236,6 +236,13 @@ export default function EditorPage() {
           )}
         </div>
       </div>
+
+      {/* Publish error banner */}
+      {publishResult?.error && (
+        <div style={{ background: "var(--red)", color: "#fff", padding: "4px 12px", fontSize: "var(--text-xs)", fontFamily: "var(--font-mono)" }}>
+          {publishResult.error}
+        </div>
+      )}
 
       {/* Frontmatter form */}
       <FrontmatterForm data={frontmatter} onChange={setFrontmatter} />

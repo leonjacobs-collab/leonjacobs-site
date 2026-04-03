@@ -89,7 +89,7 @@ export default function ThisGuy() {
             href="mailto:leon@leonmay.be"
             style={{ color: "var(--accent)" }}
           >
-            leon@leonmay.be
+            mailto @ leonmay.be
           </a>
         </li>
       </ul>
