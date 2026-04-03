@@ -1,3 +1,0 @@
-module.exports=[33290,a=>{"use strict";var b=a.i(7997);function c({children:a}){return(0,b.jsxs)("html",{lang:"en",children:[(0,b.jsx)("head",{children:(0,b.jsx)("link",{rel:"stylesheet",href:"https://departuremono.com/assets/DepartureMono-1_422.css"})}),(0,b.jsx)("body",{children:a})]})}a.s(["default",()=>c,"metadata",0,{title:{default:"Leon Jacobs",template:"%s — Leon Jacobs"},description:"Leon Jacobs — personal site & blog"}])}];
-
-//# sourceMappingURL=app_layout_tsx_271801d7._.js.map
