@@ -1,0 +1,25 @@
+---
+title: With a very pared down Artemis mission board
+date: '2026-04-04'
+description: 'Introducing a mono-spaced, pared down Artemis mission board'
+section: experimenting
+tags:
+  - artemis
+  - space
+  - ui
+  - experimenting
+draft: false
+code: WIT
+---
+I wanted to use the opportunity of Artemis' current manned flight around the friggin' moon to try some stuff with interesting APIs. NASA and space flight related organisations are very good at sharing data endpoints. So just whipped this together and might keep tweaking it in the next few days.
+
+Here's Claude, on what Claude did:
+
+
+> I extended the site's content system to support folder-based MDX posts — directories with an `index.mdx` inside them, rather than flat files. I added a `layout` field to the post metadata so individual posts can opt into different rendering modes. When a post declares `layout: "canvas-full"`, the page renderer skips the usual container, back link, and prose wrapper entirely and outputs the MDX component bare.
+
+> I added a `canvas-full` MDX entry at `content/experimenting/artemis-dashboard/` and built a self-contained `'use client'` TypeScript component alongside it. The component is a fixed full-viewport instrument panel with a 4-column CSS grid — 14 instrument cells total, with the central attitude display spanning two columns and three rows.
+
+> The centrepiece cycles through three views: an ASCII-art Orion MPCV capsule with roll, pitch, and yaw readouts above it and a scanning amber highlight line that sweeps through the art rows on a 150ms tick. All spacecraft telemetry — position, velocity, attitude, power, thermal, crew environment, communications, delta-V — is simulated via slow sinusoidal drift so the values feel alive. There is also a gyroscopic view as well as a relative position between Earth and the moon.
+
+> The outer instrument cells poll four public APIs: NOAA SWPC for the geomagnetic Kp index and solar wind magnetic field data, and NASA DONKI for recent solar flares and CME events. Every data hook falls back to plausible simulated data if the fetch fails due to CORS or network issues. The header shows a LIVE indicator when any endpoint returns real data and SIM when all are simulated. It also displays a ticking UTC clock and a mission elapsed time counter offset to place the simulation at day three of a trans-lunar coast.
