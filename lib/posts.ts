@@ -17,6 +17,7 @@ export interface PostMeta {
   description: string;
   tags: string[];
   draft: boolean;
+  layout?: string;
 }
 
 function isPostFile(filename: string): boolean {
@@ -41,7 +42,8 @@ export function getAllPosts(): PostMeta[] {
     const dir = path.join(CONTENT_DIR, section);
     if (!fs.existsSync(dir)) continue;
 
-    const files = fs.readdirSync(dir).filter(isPostFile);
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    const files = entries.filter((e) => e.isFile() && isPostFile(e.name)).map((e) => e.name);
 
     // Deduplicate: if both foo.mdx and foo.md exist, prefer .mdx
     const seen = new Map<string, string>();
@@ -62,6 +64,28 @@ export function getAllPosts(): PostMeta[] {
         description: (data.description as string) ?? "",
         tags: (data.tags as string[]) ?? [],
         draft: data.draft !== false,
+        layout: (data.layout as string) ?? undefined,
+      });
+    }
+
+    // Also scan subdirectories for folder-based posts (dir/slug/index.mdx)
+    for (const entry of entries) {
+      if (!entry.isDirectory()) continue;
+      const slug = entry.name;
+      if (seen.has(slug)) continue; // already have a flat file with this slug
+      const indexPath = path.join(dir, slug, "index.mdx");
+      if (!fs.existsSync(indexPath)) continue;
+      const raw = fs.readFileSync(indexPath, "utf-8");
+      const { data } = matter(raw);
+      posts.push({
+        slug,
+        section: (data.section as Section) || section,
+        title: (data.title as string) ?? slug,
+        date: (data.date as string) ?? "",
+        description: (data.description as string) ?? "",
+        tags: (data.tags as string[]) ?? [],
+        draft: data.draft !== false,
+        layout: (data.layout as string) ?? undefined,
       });
     }
   }
@@ -131,6 +155,9 @@ function resolvePostPath(slug: string): { filePath: string; section: Section } |
       const filePath = path.join(CONTENT_DIR, section, `${slug}${ext}`);
       if (fs.existsSync(filePath)) return { filePath, section };
     }
+    // Folder-based: content/{section}/{slug}/index.mdx
+    const indexPath = path.join(CONTENT_DIR, section, slug, "index.mdx");
+    if (fs.existsSync(indexPath)) return { filePath: indexPath, section };
   }
   // Legacy fallback
   for (const ext of POST_EXTENSIONS) {
@@ -156,6 +183,7 @@ export function getPostBySlug(slug: string) {
       description: (data.description as string) ?? "",
       tags: (data.tags as string[]) ?? [],
       draft: data.draft !== false,
+      layout: (data.layout as string) ?? undefined,
     } satisfies PostMeta,
     content,
   };

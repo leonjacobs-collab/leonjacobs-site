@@ -8,6 +8,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import { getPublishedPosts, getPostBySlug } from "@/lib/posts";
 import { SECTIONS } from "@/lib/sections";
 import AsciiArt from "@/app/components/AsciiArt";
+import ArtemisDashboard from "@/content/experimenting/artemis-dashboard/components/ArtemisDashboard";
 
 export function generateStaticParams() {
   return getPublishedPosts().map((post) => ({
@@ -51,6 +52,13 @@ export default async function PostPage({
     remarkPlugins: [remarkGfm],
     rehypePlugins: [[rehypePrettyCode, { theme: "vitesse-dark", keepBackground: true }]],
   });
+
+  const mdxComponents = { AsciiArt, ArtemisDashboard };
+
+  // canvas-full: render the MDX component edge-to-edge with no site chrome
+  if (post.meta.layout === "canvas-full") {
+    return <MDXContent components={mdxComponents} />;
+  }
 
   return (
     <main
@@ -101,7 +109,7 @@ export default async function PostPage({
       <hr className="divider" />
 
       <article className="prose">
-        <MDXContent components={{ AsciiArt }} />
+        <MDXContent components={mdxComponents} />
       </article>
     </main>
   );
