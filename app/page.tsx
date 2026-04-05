@@ -1,24 +1,13 @@
 import { getAllTags } from "@/lib/posts";
 import { SearchField } from "./components/SearchField";
+import Masthead from "./components/Masthead";
 
 export default function Home() {
   const tags = getAllTags();
 
   return (
-    <main className="container" style={{ paddingTop: "var(--sp-16)", paddingBottom: "var(--sp-12)" }}>
-      <div style={{ marginBottom: "var(--sp-2)" }}>
-        <span className="tag">v2.0</span>
-      </div>
-
-      <h1
-        style={{
-          fontSize: "var(--text-3xl)",
-          lineHeight: "var(--leading-tight)",
-          marginBottom: "var(--sp-4)",
-        }}
-      >
-       This may be Leon.  
-      </h1>
+    <main className="container" style={{ paddingTop: "var(--sp-8)", paddingBottom: "var(--sp-12)" }}>
+      <Masthead />
 
       <p
         style={{
@@ -27,6 +16,8 @@ export default function Home() {
           maxWidth: "55ch",
           marginBottom: "var(--sp-6)",
           lineHeight: "var(--leading-snug)",
+          textAlign: "center",
+          margin: "0 auto var(--sp-6)",
         }}
       >
         Creative &amp; Experience Director at Empathy Lab.

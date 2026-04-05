@@ -24,9 +24,14 @@ export default function PostList() {
       {/* Top bar */}
       <div className="topbar">
         <span className="topbar-title">leonmay.be — editor</span>
-        <button className="btn-primary" onClick={() => navigate("/new")}>
-          + New Post
-        </button>
+        <div style={{ display: "flex", gap: 8 }}>
+          <button className="btn-secondary" onClick={() => navigate("/masthead")}>
+            Masthead
+          </button>
+          <button className="btn-primary" onClick={() => navigate("/new")}>
+            + New Post
+          </button>
+        </div>
       </div>
 
       {/* Section tabs */}

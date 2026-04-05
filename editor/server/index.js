@@ -7,6 +7,7 @@ import { SITE_ROOT } from "./utils/paths.js";
 import postsRouter from "./routes/posts.js";
 import mediaRouter from "./routes/media.js";
 import gitRouter from "./routes/git.js";
+import mastheadRouter from "./routes/masthead.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -22,6 +23,7 @@ app.use("/images", express.static(path.join(SITE_ROOT, "public", "images")));
 app.use("/api/posts", postsRouter);
 app.use("/api/media", mediaRouter);
 app.use("/api/git", gitRouter);
+app.use("/api/masthead", mastheadRouter);
 
 app.listen(PORT, () => {
   console.log(`\n  ✦ Editor API running at http://localhost:${PORT}`);
