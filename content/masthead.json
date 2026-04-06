@@ -1,105 +1,130 @@
 {
-  "active": null,
+  "active": {
+    "id": "artemis-ii-flyby",
+    "lines": [
+      {
+        "spans": [
+          { "text": "██╗     ███████╗ ", "color": null },
+          { "text": "██████╗ ", "color": "#ddddcc" },
+          { "text": "███╗   ██╗", "color": null }
+        ]
+      },
+      {
+        "spans": [
+          { "text": "██║     ██╔════╝", "color": null },
+          { "text": "██", "color": "#ddddcc" },
+          { "text": "╔═══", "color": "#444433" },
+          { "text": "██╗", "color": "#ddddcc" },
+          { "text": "████╗  ██║", "color": null }
+        ]
+      },
+      {
+        "spans": [
+          { "text": "██║     █████╗  ", "color": null },
+          { "text": "██║", "color": "#ddddcc" },
+          { "text": "   ", "color": "#444433" },
+          { "text": "██║", "color": "#888877" },
+          { "text": "██╔██╗ ██║", "color": null }
+        ]
+      },
+      {
+        "spans": [
+          { "text": "██║     ██╔══╝  ", "color": null },
+          { "text": "██║", "color": "#ddddcc" },
+          { "text": "   ", "color": "#444433" },
+          { "text": "██║", "color": "#888877" },
+          { "text": "██║╚██╗██║", "color": null }
+        ]
+      },
+      {
+        "spans": [
+          { "text": "███████╗███████╗", "color": null },
+          { "text": "╚██████╔╝", "color": "#ddddcc" },
+          { "text": "██║ ╚████║", "color": null }
+        ]
+      },
+      {
+        "spans": [
+          { "text": "╚══════╝╚══════╝ ", "color": null },
+          { "text": "╚═════╝ ", "color": "#ddddcc" },
+          { "text": "╚═╝  ╚═══╝", "color": null }
+        ]
+      },
+      {
+        "spans": [
+          { "text": "     ██╗ █████╗  ██████╗ ", "color": null },
+          { "text": "██", "color": "#3388cc" },
+          { "text": "██", "color": "#55bb66" },
+          { "text": "██╗ ", "color": "#3388cc" },
+          { "text": "██████╗ ███████╗", "color": null }
+        ]
+      },
+      {
+        "spans": [
+          { "text": "     ██║██╔══██╗██╔════╝", "color": null },
+          { "text": "██╔", "color": "#3388cc" },
+          { "text": "══", "color": "#55bb66" },
+          { "text": "═██╗", "color": "#3388cc" },
+          { "text": "██╔══██╗██╔════╝", "color": null }
+        ]
+      },
+      {
+        "spans": [
+          { "text": "     ██║███████║██║     ", "color": null },
+          { "text": "██║", "color": "#3388cc" },
+          { "text": " · ", "color": "#55bb66" },
+          { "text": "██║", "color": "#3388cc" },
+          { "text": "██████╔╝███████╗", "color": null }
+        ]
+      },
+      {
+        "spans": [
+          { "text": "██   ██║██╔══██║██║     ", "color": null },
+          { "text": "██║", "color": "#3388cc" },
+          { "text": "   ", "color": "#55bb66" },
+          { "text": "██║", "color": "#3388cc" },
+          { "text": "██╔══██╗╚════██║", "color": null }
+        ]
+      },
+      {
+        "spans": [
+          { "text": "╚█████╔╝██║  ██║╚██████╗", "color": null },
+          { "text": "╚██", "color": "#3388cc" },
+          { "text": "██", "color": "#55bb66" },
+          { "text": "█╔╝", "color": "#3388cc" },
+          { "text": "██████╔╝███████║", "color": null }
+        ]
+      },
+      {
+        "spans": [
+          { "text": " ╚════╝ ╚═╝  ╚═╝ ╚═════╝ ", "color": null },
+          { "text": "╚══", "color": "#3388cc" },
+          { "text": "══", "color": "#55bb66" },
+          { "text": "═╝ ", "color": "#3388cc" },
+          { "text": "╚═════╝ ╚══════╝", "color": null }
+        ]
+      }
+    ],
+    "caption": "artemis II · crewed lunar flyby",
+    "captionLink": null,
+    "activeUntil": null
+  },
   "defaults": [
     {
       "id": "block-heavy",
       "lines": [
-        {
-          "spans": [
-            {
-              "text": "██╗     ███████╗ ██████╗ ███╗   ██╗",
-              "color": null
-            }
-          ]
-        },
-        {
-          "spans": [
-            {
-              "text": "██║     ██╔════╝██╔═══██╗████╗  ██║",
-              "color": null
-            }
-          ]
-        },
-        {
-          "spans": [
-            {
-              "text": "██║     █████╗  ██║   ██║██╔██╗ ██║",
-              "color": null
-            }
-          ]
-        },
-        {
-          "spans": [
-            {
-              "text": "██║     ██╔══╝  ██║   ██║██║╚██╗██║",
-              "color": null
-            }
-          ]
-        },
-        {
-          "spans": [
-            {
-              "text": "███████╗███████╗╚██████╔╝██║ ╚████║",
-              "color": null
-            }
-          ]
-        },
-        {
-          "spans": [
-            {
-              "text": "╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝",
-              "color": null
-            }
-          ]
-        },
-        {
-          "spans": [
-            {
-              "text": "     ██╗ █████╗  ██████╗ ██████╗ ██████╗ ███████╗",
-              "color": null
-            }
-          ]
-        },
-        {
-          "spans": [
-            {
-              "text": "     ██║██╔══██╗██╔════╝██╔═══██╗██╔══██╗██╔════╝",
-              "color": null
-            }
-          ]
-        },
-        {
-          "spans": [
-            {
-              "text": "     ██║███████║██║     ██║   ██║██████╔╝███████╗",
-              "color": null
-            }
-          ]
-        },
-        {
-          "spans": [
-            {
-              "text": "██   ██║██╔══██║██║     ██║   ██║██╔══██╗╚════██║",
-              "color": null
-            }
-          ]
-        },
-        {
-          "spans": [
-            {
-              "text": "╚█████╔╝██║  ██║╚██████╗╚██████╔╝██████╔╝███████║",
-              "color": null
-            }
-          ]
-        },
-        {
-          "spans": [
-            {
-              "text": " ╚════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝",
-              "color": null
-            }
-          ]
-        }
+        { "spans": [{ "text": "██╗     ███████╗ ██████╗ ███╗   ██╗", "color": null }] },
+        { "spans": [{ "text": "██║     ██╔════╝██╔═══██╗████╗  ██║", "color": null }] },
+        { "spans": [{ "text": "██║     █████╗  ██║   ██║██╔██╗ ██║", "color": null }] },
+        { "spans": [{ "text": "██║     ██╔══╝  ██║   ██║██║╚██╗██║", "color": null }] },
+        { "spans": [{ "text": "███████╗███████╗╚██████╔╝██║ ╚████║", "color": null }] },
+        { "spans": [{ "text": "╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝", "color": null }] },
+        { "spans": [{ "text": "     ██╗ █████╗  ██████╗ ██████╗ ██████╗ ███████╗", "color": null }] },
+        { "spans": [{ "text": "     ██║██╔══██╗██╔════╝██╔═══██╗██╔══██╗██╔════╝", "color": null }] },
+        { "spans": [{ "text": "     ██║███████║██║     ██║   ██║██████╔╝███████╗", "color": null }] },
+        { "spans": [{ "text": "██   ██║██╔══██║██║     ██║   ██║██╔══██╗╚════██║", "color": null }] },
+        { "spans": [{ "text": "╚█████╔╝██║  ██║╚██████╗╚██████╔╝██████╔╝███████║", "color": null }] },
+        { "spans": [{ "text": " ╚════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝", "color": null }] }
       ]
     }
   ]
