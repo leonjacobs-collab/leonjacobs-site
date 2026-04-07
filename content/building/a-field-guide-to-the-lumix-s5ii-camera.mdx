@@ -1,0 +1,51 @@
+---
+title: A Field Guide To The Lumix S5ii Camera
+date: '2026-04-07'
+description: field-guide-to-the-panasonic-lumix-s5ii-camera
+section: building
+tags:
+  - building
+  - camera
+  - usecase
+  - ai
+  - photography
+draft: false
+code: A-F
+---
+One of the most interesting use cases of AI, especially LLMs, is the ability to rethink the way we do user manuals. Today, most consumer products have loads of interesting and useful user content built for them by enthusiasts. And sometimes a booklet that gets forgotten at the bottom of a drawer is the least useful way to get the most out of a product - especially an expensive one. 
+
+I recently got myself a new camera and decided on the Panasonic Lumix S5ii. I've been watching some guides and skimming through the manual. But then asked myself - what if I could build myself a field guide for the camera by getting Claude Code to integrate all the transcripts from the videos and the actual official user manual so that I could poll it with relevant questions about how I personally want to use the camera. 
+
+I manage to get something useful by simply setting it up as a project inside the Claude Mac desktop app. 
+
+But then, I wondered, what would happen if I actually turn it into a mini set of apps that live on my website.
+
+And here is the result: [Lumix S5ii Field Guide](https://leonmay.be/building/lumix-s5ii-field-guide)
+
+The feature I like the most, because of the weirdness of my mind, is what I like to imagine to be the world's first ASCII based lens preview tool.
+
+![Screenshot-2026-04-07-at-12.20.33.png](/images/building/a-field-guide-to-the-lumix-s5ii-camera/Screenshot-2026-04-07-at-12.20.33.png)
+
+For the real geeks, here's what was built and how:
+
+> **What it is**
+
+- A self-contained field guide for the Panasonic Lumix S5II, built as a section of my personal site
+- Five interactive mini-apps: Hidden Gems browser, Scene Recommender, Lens Helper, Troubleshooting decision tree, and LUTs directory
+- Unified app shell with sub-masthead and sticky tab navigation — feels like one cohesive tool, not separate pages
+
+**How it was built**
+
+- Next.js App Router with full static generation — no API routes, no database, no CMS
+- All content lives as markdown files with YAML frontmatter, validated by Zod schemas at build time — bad data breaks the build on purpose
+- Filtering and interactivity happens client-side against a pre-built index using plain React state
+- Styled with CSS Modules using only the site's existing design tokens — no Tailwind, no CSS-in-JS, no new fonts or colours
+- L-mount lens catalog scraped from l-mount.com via a GitHub Action that refreshes monthly
+
+**What makes it different**
+
+- An ASCII camera viewfinder simulator with real exposure physics — slide aperture for depth of field, ISO for noise grain, focal length for field of view, and watch the scene respond in real time
+- Three viewfinder scene presets (Portrait, Person, Landscape) built entirely from Unicode block characters (▓▒░█▀▄▐▌), with bokeh circles for out-of-focus highlights and block-char noise at high ISO
+- Every claim about the camera cites its source (manual, creator videos, community, firsthand testing) — and when sources disagree, the UI surfaces both sides with a conflict badge
+- "I own this" lens inventory backed by localStorage — no accounts, no sign-up, just tick the lenses you have and filter by your kit
+- Instrument-panel aesthetic throughout: three-letter section codes, monospaced readouts, neumorphic cards — treating the camera like the precision instrument it is
