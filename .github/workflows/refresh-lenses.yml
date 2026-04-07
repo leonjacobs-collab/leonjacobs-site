@@ -1,0 +1,50 @@
+name: Refresh L-mount lens list
+
+on:
+  schedule:
+    # First day of every month at 06:00 UTC
+    - cron: "0 6 1 * *"
+  workflow_dispatch: # allow manual trigger
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run lens scraper
+        run: node scripts/scrape-lmount-lenses.mjs
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet content/lumix-s5ii/lenses/lenses.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create Pull Request
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore(field-guide): refresh L-mount lens list"
+          title: "Refresh L-mount lens list"
+          body: |
+            Automated refresh of the L-mount lens list from
+            https://l-mount.com/en/lenses
+
+            Please review the diff before merging — the scraper is
+            best-effort and the page structure may have changed.
+          branch: chore/refresh-lens-list
+          delete-branch: true

@@ -1,0 +1,103 @@
+/* GemCard — uses ONLY existing design tokens from globals.css */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  /* card base styles inherited from globals.css .card class */
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  margin: 0;
+}
+
+.code {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--accent);
+  border: 1px solid var(--border-accent);
+  border-radius: 4px;
+  padding: 2px 8px;
+  letter-spacing: 0.12em;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: var(--text-lg);
+  color: var(--fg);
+  margin: 0;
+  line-height: var(--leading-tight);
+}
+
+.menuPath {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menuLabel {
+  font-size: var(--text-xs);
+  color: var(--fg-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.menuValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  word-break: break-word;
+}
+
+.summary {
+  font-size: var(--text-sm);
+  color: var(--fg);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin: 0;
+  padding-top: var(--sp-1);
+  border-top: 1px dotted var(--border);
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 60px;
+}
+
+.spec dt {
+  font-size: var(--text-xs);
+  color: var(--fg-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.spec dd {
+  font-size: var(--text-sm);
+  color: var(--fg);
+  margin: 0;
+  font-family: var(--font-mono);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: var(--sp-1);
+}

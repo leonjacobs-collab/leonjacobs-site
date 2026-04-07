@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-04-07",
+  "source": "https://l-mount.com/en/lenses",
+  "lenses": [
+    {
+      "id": "panasonic-lumix-s-20-60",
+      "brand": "Panasonic",
+      "name": "Lumix S 20-60mm F3.5-5.6",
+      "mount": "L-mount",
+      "focal_length": [20, 60],
+      "aperture": [3.5, 5.6],
+      "type": "zoom",
+      "category": "standard",
+      "weight_g": 350,
+      "manual_focus_only": false,
+      "notes": "Common S5II kit lens. Light, versatile, slow at the long end.",
+      "source_url": "https://l-mount.com/en/lenses"
+    },
+    {
+      "id": "panasonic-lumix-s-50-f1-8",
+      "brand": "Panasonic",
+      "name": "Lumix S 50mm F1.8",
+      "mount": "L-mount",
+      "focal_length": [50, 50],
+      "aperture": [1.8, 1.8],
+      "type": "prime",
+      "category": "standard",
+      "weight_g": 300,
+      "manual_focus_only": false,
+      "notes": "Part of the f/1.8 prime series. Uniform body size with the 24/35/85 f/1.8 primes.",
+      "source_url": "https://l-mount.com/en/lenses"
+    },
+    {
+      "id": "panasonic-lumix-s-85-f1-8",
+      "brand": "Panasonic",
+      "name": "Lumix S 85mm F1.8",
+      "mount": "L-mount",
+      "focal_length": [85, 85],
+      "aperture": [1.8, 1.8],
+      "type": "prime",
+      "category": "tele",
+      "weight_g": 355,
+      "manual_focus_only": false,
+      "notes": "Portrait workhorse. Light for an 85mm.",
+      "source_url": "https://l-mount.com/en/lenses"
+    },
+    {
+      "id": "panasonic-lumix-s-16-35-f4",
+      "brand": "Panasonic",
+      "name": "Lumix S 16-35mm F4",
+      "mount": "L-mount",
+      "focal_length": [16, 35],
+      "aperture": [4, 4],
+      "type": "zoom",
+      "category": "wide",
+      "weight_g": 500,
+      "manual_focus_only": false,
+      "notes": "Constant f/4. Workable for landscape and astro at the wide end.",
+      "source_url": "https://l-mount.com/en/lenses"
+    },
+    {
+      "id": "sigma-14-f1-4-dg-dn-art",
+      "brand": "Sigma",
+      "name": "14mm F1.4 DG DN Art",
+      "mount": "L-mount",
+      "focal_length": [14, 14],
+      "aperture": [1.4, 1.4],
+      "type": "prime",
+      "category": "ultra-wide",
+      "weight_g": 1170,
+      "manual_focus_only": false,
+      "notes": "Ewen Bell rates this as one of the best astro lenses available. Heavy.",
+      "source_url": "https://l-mount.com/en/lenses"
+    },
+    {
+      "id": "sigma-24-70-f2-8-dg-dn-ii",
+      "brand": "Sigma",
+      "name": "24-70mm F2.8 DG DN II Art",
+      "mount": "L-mount",
+      "focal_length": [24, 70],
+      "aperture": [2.8, 2.8],
+      "type": "zoom",
+      "category": "standard",
+      "weight_g": 745,
+      "manual_focus_only": false,
+      "notes": "Standard zoom workhorse. Constant f/2.8.",
+      "source_url": "https://l-mount.com/en/lenses"
+    }
+  ]
+}

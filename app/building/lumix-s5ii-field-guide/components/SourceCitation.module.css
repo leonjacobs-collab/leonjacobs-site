@@ -1,0 +1,66 @@
+/* SourceCitation — uses ONLY existing design tokens from globals.css */
+
+.wrapper {
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-2);
+  border-top: 1px dotted var(--border);
+}
+
+.heading {
+  font-size: var(--text-xs);
+  color: var(--fg-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--sp-1);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+}
+
+.typeBadge {
+  display: inline-block;
+  font-size: 0.65rem;
+  padding: 1px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--border);
+  color: var(--fg-faint);
+  min-width: 60px;
+  text-align: center;
+}
+
+.type-official {
+  border-color: var(--border-accent);
+  color: var(--accent);
+}
+
+.type-creator {
+  border-color: var(--border);
+  color: var(--fg-muted);
+}
+
+.type-community {
+  border-color: var(--border);
+  color: var(--fg-faint);
+}
+
+.type-firsthand {
+  border-color: var(--border-accent);
+  color: var(--accent);
+  font-style: italic;
+}

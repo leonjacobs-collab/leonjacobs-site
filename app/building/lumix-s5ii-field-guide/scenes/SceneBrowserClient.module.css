@@ -1,0 +1,19 @@
+/* SceneBrowserClient — uses ONLY existing design tokens from globals.css */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: var(--sp-3);
+}
+
+.empty {
+  padding: var(--sp-6) var(--sp-3);
+  text-align: center;
+  background: var(--bg-sunken);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+  letter-spacing: 0.08em;
+}

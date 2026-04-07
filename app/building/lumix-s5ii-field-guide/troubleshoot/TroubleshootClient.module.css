@@ -1,0 +1,242 @@
+/* TroubleshootClient — uses ONLY existing design tokens from globals.css */
+
+.rootList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rootItem {
+  cursor: pointer;
+}
+
+.rootButton {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: var(--sp-3);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-raised);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.rootButton:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.rootCode {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--accent);
+  border: 1px solid var(--border-accent);
+  border-radius: 4px;
+  padding: 2px 8px;
+  letter-spacing: 0.12em;
+  flex-shrink: 0;
+}
+
+.rootSymptom {
+  font-size: var(--text-base);
+  color: var(--fg);
+  margin: 0;
+}
+
+/* Breadcrumbs */
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1);
+  margin-bottom: var(--sp-4);
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+}
+
+.crumbButton {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  padding: 0;
+  text-decoration: none;
+}
+
+.crumbButton:hover {
+  text-decoration: underline;
+}
+
+.crumbSep {
+  color: var(--fg-faint);
+}
+
+.crumbCurrent {
+  color: var(--fg);
+}
+
+/* Active node display */
+
+.nodeCard {
+  padding: var(--sp-4);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-raised);
+  margin-bottom: var(--sp-4);
+}
+
+.nodeType {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--accent);
+  border: 1px solid var(--border-accent);
+  border-radius: 4px;
+  padding: 2px 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-2);
+}
+
+.nodeTitle {
+  font-size: var(--text-xl);
+  color: var(--fg);
+  margin: 0 0 var(--sp-2) 0;
+  line-height: var(--leading-tight);
+}
+
+.nodeQuestion {
+  font-size: var(--text-lg);
+  color: var(--fg);
+  margin: 0 0 var(--sp-2) 0;
+  line-height: var(--leading-snug);
+}
+
+.nodeCause {
+  font-size: var(--text-base);
+  color: var(--accent);
+  margin: 0 0 var(--sp-2) 0;
+  line-height: var(--leading-snug);
+  font-family: var(--font-mono);
+}
+
+.nodeBody {
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+  line-height: var(--leading-body);
+  margin: 0;
+}
+
+/* Children navigation */
+
+.childrenLabel {
+  font-size: var(--text-xs);
+  color: var(--fg-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--sp-2);
+}
+
+.childrenList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.childButton {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: var(--sp-3);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-raised);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.childButton:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-glow);
+}
+
+.childType {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--fg-faint);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.childText {
+  font-size: var(--text-sm);
+  color: var(--fg);
+  margin: 0;
+}
+
+.leaf {
+  padding: var(--sp-4);
+  background: var(--bg-sunken);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.leafLabel {
+  font-size: var(--text-xs);
+  color: var(--fg-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--sp-1);
+}
+
+.leafText {
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+  margin: 0;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  margin-top: var(--sp-3);
+  padding: 6px 12px;
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--fg-muted);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.backButton:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}

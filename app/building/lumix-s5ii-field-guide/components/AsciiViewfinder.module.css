@@ -1,0 +1,267 @@
+/* AsciiViewfinder — uses ONLY existing design tokens from globals.css */
+
+.viewfinder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+}
+
+/* ── EVF (Electronic Viewfinder) ── */
+
+.evf {
+  background: var(--bg-sunken);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sunken);
+  overflow: hidden;
+}
+
+.evfTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--sp-1) var(--sp-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.evfLabel {
+  font-size: var(--text-xs);
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.evfFov {
+  font-size: var(--text-xs);
+  color: var(--fg-faint);
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
+.frame {
+  display: block;
+  padding: var(--sp-1) var(--sp-2);
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 1.4vw, 12px);
+  line-height: 1.25;
+  letter-spacing: 0;
+  white-space: pre;
+  color: var(--fg);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.frame::-webkit-scrollbar {
+  display: none;
+}
+
+.evfBottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-1) var(--sp-2);
+  border-top: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.evfStat {
+  font-size: var(--text-xs);
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+.evfMeter {
+  font-size: var(--text-xs);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  margin-left: auto;
+}
+
+/* ── Scene mode selector ── */
+
+.modeBar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.modeLabel {
+  font-size: var(--text-xs);
+  color: var(--fg-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.modeButtons {
+  display: flex;
+  gap: var(--sp-1);
+  flex: 1;
+}
+
+.modeBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  padding: var(--sp-1) var(--sp-2);
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.modeBtn:hover {
+  border-color: var(--fg-faint);
+}
+
+.modeBtnActive {
+  border-color: var(--accent);
+  background: var(--bg-raised);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.modeBtnCode {
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--fg-faint);
+  letter-spacing: 0.12em;
+}
+
+.modeBtnActive .modeBtnCode {
+  color: var(--accent);
+}
+
+.modeBtnLabel {
+  font-size: var(--text-xs);
+  color: var(--fg-muted);
+}
+
+.modeBtnActive .modeBtnLabel {
+  color: var(--fg);
+}
+
+/* ── Sliders ── */
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-1) var(--sp-2);
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.sliderLabel {
+  font-size: var(--text-xs);
+  color: var(--fg-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  min-width: 60px;
+  flex-shrink: 0;
+}
+
+.range {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.sliderValue {
+  font-size: var(--text-xs);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  min-width: 48px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── Exposure readout ── */
+
+.exposure {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-1) var(--sp-2);
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.exposureLabel {
+  font-size: var(--text-xs);
+  color: var(--fg-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.exposureValue {
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+}
+
+.exposureOk {
+  color: var(--accent);
+}
+
+.exposureWarn {
+  color: var(--fg-muted);
+}
+
+.exposureBad {
+  color: var(--fg-faint);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 640px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .frame {
+    font-size: clamp(5px, 1.8vw, 10px);
+  }
+}
