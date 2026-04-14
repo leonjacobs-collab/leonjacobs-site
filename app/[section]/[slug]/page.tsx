@@ -9,6 +9,7 @@ import { getPublishedPosts, getPostBySlug } from "@/lib/posts";
 import { SECTIONS } from "@/lib/sections";
 import AsciiArt from "@/app/components/AsciiArt";
 import ArtemisDashboard from "@/content/experimenting/artemis-dashboard/components/ArtemisDashboard";
+import AsciiMirror from "@/content/experimenting/ascii-mirror/components/AsciiMirror";
 
 export function generateStaticParams() {
   return getPublishedPosts().map((post) => ({
@@ -53,7 +54,7 @@ export default async function PostPage({
     rehypePlugins: [[rehypePrettyCode, { theme: "vitesse-dark", keepBackground: true }]],
   });
 
-  const mdxComponents = { AsciiArt, ArtemisDashboard };
+  const mdxComponents = { AsciiArt, ArtemisDashboard, AsciiMirror };
 
   // canvas-full: render the MDX component edge-to-edge with no site chrome
   if (post.meta.layout === "canvas-full") {
